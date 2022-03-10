@@ -1,16 +1,21 @@
 import * as React from 'react';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import Paper from '@mui/material/Paper';
+import InputBase from '@mui/material/InputBase';
+import SearchIcon from '@mui/icons-material/Search';
+import HomeIcon from '@mui/icons-material/Home';
 
-export default function AppMenuBar({ onClick }) {
+import { useNavigate } from 'react-router-dom';
+
+export default function AppMenuBar({ setOpen }) {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  const navigate = useNavigate();
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -27,13 +32,28 @@ export default function AppMenuBar({ onClick }) {
         color="inherit"
         aria-label="menu"
         sx={{ mr: 2 }}
-        onClick={() => onClick(true)}
+        onClick={() => setOpen((prev) => !prev)}
       >
         <MenuIcon />
       </IconButton>
-      <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-        Photos
-      </Typography>
+      <HomeIcon
+        sx={{ mx: 2, cursor: 'pointer' }}
+        onClick={() => navigate('/')}
+      />
+      <Paper
+        component="form"
+        sx={{
+          p: '2px 4px',
+          display: 'flex',
+          alignItems: 'center',
+          width: '100%',
+        }}
+      >
+        <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Search" />
+        <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
+          <SearchIcon />
+        </IconButton>
+      </Paper>
       {auth && (
         <div>
           <IconButton

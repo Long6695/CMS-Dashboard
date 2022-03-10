@@ -14,6 +14,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import Typography from '@mui/material/Typography';
 
 import AppMenuBar from 'components/AppBar/AppBar';
 
@@ -88,10 +89,6 @@ export default function MainLayout({ children }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
-  const handleDrawerOpen = (value) => {
-    setOpen(value);
-  };
-
   const handleDrawerClose = () => {
     setOpen(false);
   };
@@ -100,17 +97,13 @@ export default function MainLayout({ children }) {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
-        <AppMenuBar onClick={handleDrawerOpen} />
+        <AppMenuBar setOpen={setOpen} />
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
-          </IconButton>
+          <Typography variant="h5" component="div" align="center" width="100%">
+            Welcome
+          </Typography>
         </DrawerHeader>
         <Divider />
         <List>
