@@ -26,7 +26,7 @@ const data = {
 const DoughnutChart = () => {
   return (
     <Box width="300px" height="300px">
-      <Doughnut data={data} options={{}} />
+      <Doughnut data={data} />
     </Box>
   );
 };

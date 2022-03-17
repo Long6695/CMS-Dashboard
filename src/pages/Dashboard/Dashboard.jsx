@@ -8,21 +8,21 @@ import Tasks from './components/Tasks';
 import User from './components/User';
 const Dashboard = () => {
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} columns={16}>
       <Typography variant="h4" ml="16px" my="16px">
         Report
       </Typography>
-      <Grid item xs={12}>
+      <Grid item xs={16} lg={16}>
         <Paper>
           <ProductsChart />
         </Paper>
       </Grid>
-      <Grid item xs={7}>
+      <Grid item xs={16} lg={10}>
         <Paper>
           <Tasks />
         </Paper>
       </Grid>
-      <Grid item xs={5}>
+      <Grid item xs={16} lg={6}>
         <Paper>
           <User />
         </Paper>
